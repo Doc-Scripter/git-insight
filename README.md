@@ -54,3 +54,4 @@ An effective development workflow will foster collaboration and maintain code qu
 *   **Development Workflow**: Version control, testing, and code review practices. See the [Commit Guidelines](COMMIT_GUIDELINES.md) for commit message conventions.
 *   **Cloud Operations and Hosting**: Detailed strategies for cloud deployment, monitoring, and management. See the [Cloud Operations and Hosting Guide](docs/cloud_operations.md) for more details.
 *   **User Flows**: Comprehensive documentation of user journeys and interactions within the platform. See the [User Flows Guide](docs/user_flows.md) for more details.
+*   **Features**: Detailed overview of the functionalities offered by GitInsight. See the [Features Guide](docs/features.md) for more details.
