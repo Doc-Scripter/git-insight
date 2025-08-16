@@ -1,5 +1,5 @@
 # Makefile for GitInsight
-VERSION := $(shell git describe --tags || echo "untagged")
+VERSION := $(shell git tag || echo "untagged")
 
 .PHONY: all build run test clean help health-check-api health-check-backend monitor-metrics monitor-logs update-tag
 
@@ -29,6 +29,8 @@ build:
 
 update-tag:
 	@echo "Updating tag"
+	git tag -d $(VERSION)
+	git push origin --delete $(VERSION)
 	git tag -a $(VERSION) -m "Release version $(VERSION)"
 	git push origin $(VERSION)
 run:
