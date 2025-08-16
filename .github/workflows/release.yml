@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Run Gemini CLI
+        uses: google-github-actions/run-gemini-cli@v0.1.11
+        # Add any necessary 'with' parameters here, e.g., 'with:
+        #   command: "your-gemini-command"'
+        # Adjust the position of this step based on when it needs to run in your release process.
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
