@@ -1,0 +1,70 @@
+# Configuration for stale issues and pull requests
+
+# Number of days of inactivity before an issue or pull request becomes stale
+daysUntilStale: 60
+
+# Number of days of inactivity before a stale issue or pull request is closed
+daysUntilClose: 7
+
+# Issues or pull requests with these labels will never be considered stale
+exemptLabels:
+  - "pinned"
+  - "security"
+  - "dependencies"
+
+# Label to apply when an issue or pull request becomes stale
+staleLabel: "stale"
+
+# Comment to post when an issue becomes stale. Set to `false` to disable.
+markComment: >
+  This issue has been automatically marked as stale because it has not had
+  recent activity. It will be closed if no further activity occurs. Thank you
+  for your contributions.
+
+# Comment to post when a pull request becomes stale. Set to `false` to disable.
+markPullRequestComment: >
+  This pull request has been automatically marked as stale because it has not had
+  recent activity. It will be closed if no further activity occurs. Thank you
+  for your contributions.
+
+# Comment to post when an issue is closed from staleness. Set to `false` to disable.
+closeComment: >
+  This issue was closed because it has been inactive for 7 days since being marked as stale.
+
+# Comment to post when a pull request is closed from staleness. Set to `false` to disable.
+closePullRequestComment: >
+  This pull request was closed because it has been inactive for 7 days since being marked as stale.
+
+# Only close issues if all of these labels are present.
+# onlyCloseWithLabels:
+#   - "help wanted"
+
+# Set to true to ignore issues that are in a project
+# ignoreProjects: true
+
+# Set to true to ignore issues that are in a milestone
+# ignoreMilestones: true
+
+# Set to true to ignore issues that are assigned
+# ignoreAssigned: true
+
+# Set to true to ignore issues that are open
+# ignoreOpen: true
+
+# Set to true to ignore issues that are closed
+# ignoreClosed: true
+
+# Set to true to ignore pull requests that are in a project
+# ignorePullRequestProjects: true
+
+# Set to true to ignore pull requests that are in a milestone
+# ignorePullRequestMilestones: true
+
+# Set to true to ignore pull requests that are assigned
+# ignorePullRequestAssigned: true
+
+# Set to true to ignore pull requests that are open
+# ignorePullRequestOpen: true
+
+# Set to true to ignore pull requests that are closed
+# ignorePullRequestClosed: true
