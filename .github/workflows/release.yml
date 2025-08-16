@@ -17,6 +17,12 @@ jobs:
             GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           with:
             command: "review-pr --repo=${{ github.repository }} --pr=${{ github.event.pull_request.number }}"
+      - name: Check for GEMINI_API_KEY
+        run: |
+          if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
+            echo "Error: GEMINI_API_KEY secret is not set. Please add it to your repository secrets."
+            exit 1
+          fi
         # Adjust the position of this step based on when it needs to run in your release process.
       - name: Create Release
         id: create_release
