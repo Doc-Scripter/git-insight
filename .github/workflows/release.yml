@@ -13,10 +13,17 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Gemini CLI
         uses: google-github-actions/run-gemini-cli@v0.1.11
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         with:
+            gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
             command: "review-pr --repo=${{ github.repository }} --pr=${{ github.event.pull_request.number }}"
+        env:
+          SURFACE: GitHub
+          GOOGLE_CLOUD_PROJECT:
+          GOOGLE_CLOUD_LOCATION:
+          GOOGLE_GENAI_USE_VERTEXAI: false
+          GOOGLE_GENAI_USE_GCA: false
+          GOOGLE_CLOUD_ACCESS_TOKEN:
+          PROMPT: You are a helpful assistant.
       - name: Check for GEMINI_API_KEY
         run: |
           if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
