@@ -1,0 +1,12 @@
+name: Release
+  - name: Create Release
+    id: create_release
+    uses: softprops/action-gh-release@v1
+    with:
+      files: Changelog.md
+      # You can add other build artifacts here, e.g., 'path/to/your/app.zip'
+    env:
+      GITHUB_TOKEN: ${{ }}
+```
+
+This workflow would create a release when a tag starting with `v` is pushed, and it would automatically attach your <mcfile name="Changelog.md" path="/home/gamer/git-insight/Changelog.md"></mcfile> as an asset to that release.
