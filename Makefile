@@ -68,14 +68,9 @@ monitor-logs:
 
 release:
 	@echo "Creating release archive..."
-	VERSION := $(shell git describe --tags)
-	export VERSION
-	RELEASE_DIR = release-$(VERSION)
-	mkdir -p $(RELEASE_DIR)
-	# cp Changelog.md $(RELEASE_DIR)/ # Changelog will be uploaded as a separate asset
-	# Add other assets to copy to the release directory here
-	# Example: cp -r frontend/build $(RELEASE_DIR)/frontend
-	# Example: cp backend/gitinsight $(RELEASE_DIR)/backend
-	tar -czvf $(RELEASE_DIR).tar.gz $(RELEASE_DIR)
-	rm -rf $(RELEASE_DIR)
-	@echo "Release archive created: $(RELEASE_DIR).tar.gz"
+	$(eval RELEASE_DIR := release-$(shell git describe --tags | sed 's/-dirty//g' || echo "untagged"))
+	mkdir -p $(RELEASE_DIR) && \
+	cp Changelog.txt $(RELEASE_DIR)/Changelog.txt && \
+	tar -czvf $(RELEASE_DIR).tar.gz $(RELEASE_DIR) && \
+	rm -rf $(RELEASE_DIR) && \
+	echo "Release archive created: $(RELEASE_DIR).tar.gz"
