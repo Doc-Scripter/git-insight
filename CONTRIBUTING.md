@@ -4,15 +4,17 @@ We welcome contributions to GitInsight! By contributing, you help us improve and
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [How to Contribute](#how-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Your First Code Contribution](#your-first-code-contribution)
-  - [Pull Request Guidelines](#pull-request-guidelines)
-- [Development Setup](#development-setup)
-- [Style Guides](#style-guides)
-- [License](#license)
+- [Contributing to GitInsight](#contributing-to-gitinsight)
+  - [Table of Contents](#table-of-contents)
+  - [Code of Conduct](#code-of-conduct)
+  - [How to Contribute](#how-to-contribute)
+    - [Reporting Bugs](#reporting-bugs)
+    - [Suggesting Enhancements](#suggesting-enhancements)
+    - [Your First Code Contribution](#your-first-code-contribution)
+    - [Pull Request Guidelines](#pull-request-guidelines)
+  - [Development Setup](#development-setup)
+  - [Style Guides](#style-guides)
+  - [License](#license)
 
 ## Code of Conduct
 
@@ -59,10 +61,14 @@ Follow these steps to submit a pull request:
 3.  **Make your changes** and ensure they adhere to the [Style Guides](#style-guides).
 4.  **Write tests** for your changes. Ensure all existing tests pass.
 5.  **Update documentation** if your changes affect any user-facing features or APIs.
-6.  **Commit your changes** with a clear and concise commit message. Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guidelines (e.g., `feat: add new feature`, `fix: resolve bug`).
+6.  **Commit your changes** with a clear and concise commit message. Follow our [Commit Guidelines](COMMIT_GUIDELINES.md).
+
 7.  **Push your branch** to your forked repository.
 8.  **Open a Pull Request** to the `main` branch of the original repository. Fill out the [Pull Request Template](.github/PULL_REQUEST_TEMPLATE.md) completely.
 9.  **Address review comments** promptly.
+
+*   **Code Review:** All contributions require code review.
+*   **Cloud Operations:** For details on deployment environments and cloud infrastructure, refer to the [Cloud Operations and Hosting Guide](docs/cloud_operations.md).
 
 ## Development Setup
 
@@ -110,7 +116,7 @@ To set up your local development environment, follow these steps:
 
 -   **Python:** Adhere to PEP 8.
 -   **JavaScript/TypeScript:** Follow Airbnb style guide or similar, enforced by ESLint and Prettier.
--   **Commit Messages:** Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+-   **Commit Messages:** Adhere to our [Commit Guidelines](COMMIT_GUIDELINES.md).
 
 ## License
 
