@@ -17,7 +17,7 @@ Data will be ingested from GitHub repositories through the GitHub Integration co
 
 ### Recommended Technology Stack
 *   **Frontend**: SvelteKit with React integration for server-side rendering and a rich user interface, utilizing Shadcn UI components for a highly customizable and modern design.
-*   **Backend:** Python with FastAPI for developing high-performance, asynchronous API endpoints.
+*   **Backend:** Combination of Python with FastAPI and Go for developing high-performance, asynchronous API endpoints and efficient system services.
 *   **Database:** PostgreSQL for robust, reliable, and scalable relational data storage.
 *   **Orchestration:** Kubernetes for automated deployment, scaling, and management of containerized applications.
 
@@ -50,3 +50,6 @@ An effective development workflow will foster collaboration and maintain code qu
 *   **Version Control:** Git and GitHub will be used for source code management. A branching strategy (e.g., GitFlow or GitHub Flow) will be adopted for organized development, feature isolation, and release management.
 *   **Testing:** Comprehensive testing will be integrated into the development cycle, including unit tests for individual components, integration tests for service interactions, and end-to-end tests for critical user flows.
 *   **Code Review:** A mandatory code review process will be enforced for all code changes. This ensures code quality, identifies potential bugs, promotes knowledge sharing, and maintains coding standards.
+
+*   **Development Workflow**: Version control, testing, and code review practices. See the [Commit Guidelines](COMMIT_GUIDELINES.md) for commit message conventions.
+*   **Cloud Operations and Hosting**: Detailed strategies for cloud deployment, monitoring, and management. See the [Cloud Operations and Hosting Guide](docs/cloud_operations.md) for more details.
