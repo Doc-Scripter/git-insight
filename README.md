@@ -56,3 +56,4 @@ An effective development workflow will foster collaboration and maintain code qu
 *   **User Flows**: Comprehensive documentation of user journeys and interactions within the platform. See the [User Flows Guide](docs/user_flows.md) for more details.
 *   **Features**: Detailed overview of the functionalities offered by GitInsight. See the [Features Guide](docs/features.md) for more details.
 *   **Health Checks and Monitoring**: Documentation on system health checks and monitoring tools. See the [Health Checks and Monitoring Guide](docs/health_monitoring.md) for more details.
+*   **Design Template and UX/UI Best Practices**: Guidelines for the project's design and user experience. See the [Design Template and UX/UI Best Practices](docs/ux-ui/design_template.md) for more details.
