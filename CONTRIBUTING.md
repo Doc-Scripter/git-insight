@@ -68,7 +68,7 @@ Follow these steps to submit a pull request:
 9.  **Address review comments** promptly.
 
 *   **Code Review:** All contributions require code review.
-*   **Cloud Operations:** For details on deployment environments and cloud infrastructure, refer to the [Cloud Operations and Hosting Guide](docs/cloud_operations.md), the [User Flows Guide](docs/user_flows.md) for understanding user interactions, and the [Features Guide](docs/features.md) for an overview of the platform's functionalities.
+*   **Cloud Operations:** For details on deployment environments and cloud infrastructure, refer to the [Cloud Operations and Hosting Guide](docs/cloud_operations.md), the [User Flows Guide](docs/user_flows.md) for understanding user interactions, the [Features Guide](docs/features.md) for an overview of the platform's functionalities, and the [Health Checks and Monitoring Guide](docs/health_monitoring.md) for details on system health and monitoring.
 
 ## Development Setup
 
