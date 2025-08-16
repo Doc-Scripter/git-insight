@@ -1,6 +1,7 @@
 # Makefile for GitInsight
+VERSION := $(shell git describe --tags || echo "untagged")
 
-.PHONY: all build run test clean help health-check-api health-check-backend monitor-metrics monitor-logs
+.PHONY: all build run test clean help health-check-api health-check-backend monitor-metrics monitor-logs update-tag
 
 help:
 	@echo "Usage: make <command>"
@@ -17,6 +18,7 @@ help:
 	@echo "  monitor-logs            Simulates logs monitoring"
 	@echo "  help                    Displays this help message"
 	@echo "  release                 Creates a release archive"
+	@echo "  update-tag 	         Updates the Changelog.txt file"
 
 all: build
 
@@ -25,6 +27,10 @@ build:
 	# Add commands to build your services (e.g., go build, npm install, docker build)
 	# Example: docker-compose build
 
+update-tag:
+	@echo "Updating tag"
+	git tag -a $(VERSION) -m "Release version $(VERSION)"
+	git push origin $(VERSION)
 run:
 	@echo "Running GitInsight services..."
 	# Add commands to run your services (e.g., go run, npm start, docker-compose up)
@@ -60,7 +66,7 @@ monitor-logs:
 
 release:
 	@echo "Creating release archive..."
-	VERSION := $(shell git describe --tags --always --dirty)
+	VERSION := $(shell git describe --tags)
 	export VERSION
 	RELEASE_DIR = release-$(VERSION)
 	mkdir -p $(RELEASE_DIR)
