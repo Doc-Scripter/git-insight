@@ -16,6 +16,7 @@ help:
 	@echo "  monitor-metrics         Simulates metrics monitoring"
 	@echo "  monitor-logs            Simulates logs monitoring"
 	@echo "  help                    Displays this help message"
+	@echo "  release                 Creates a release archive"
 
 all: build
 
@@ -56,3 +57,17 @@ monitor-logs:
 	@echo "Simulating logs monitoring..."
 	# This would typically involve checking Kibana/Grafana Loki dashboards or querying logs directly.
 	# Example: docker-compose logs -f
+
+release:
+	@echo "Creating release archive..."
+	VERSION := $(shell git describe --tags --always --dirty)
+	export VERSION
+	RELEASE_DIR = release-$(VERSION)
+	mkdir -p $(RELEASE_DIR)
+	# cp Changelog.md $(RELEASE_DIR)/ # Changelog will be uploaded as a separate asset
+	# Add other assets to copy to the release directory here
+	# Example: cp -r frontend/build $(RELEASE_DIR)/frontend
+	# Example: cp backend/gitinsight $(RELEASE_DIR)/backend
+	tar -czvf $(RELEASE_DIR).tar.gz $(RELEASE_DIR)
+	rm -rf $(RELEASE_DIR)
+	@echo "Release archive created: $(RELEASE_DIR).tar.gz"
