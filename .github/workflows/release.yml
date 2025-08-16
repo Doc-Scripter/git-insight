@@ -13,7 +13,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: Changelog.md
+          files: Changelog.txt
           # You can add other build artifacts here, e.g., 'path/to/your/app.zip'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # This will now reference your GitHub secret
