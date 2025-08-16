@@ -29,8 +29,8 @@ build:
 
 update-tag:
 	@echo "Updating tag"
-	git tag -d $(VERSION)
-	git push origin --delete $(VERSION)
+	# git tag -d $(VERSION)
+	# git push origin --delete $(VERSION)
 	git tag -a $(VERSION) -m "Release version $(VERSION)"
 	git push origin $(VERSION)
 run:
