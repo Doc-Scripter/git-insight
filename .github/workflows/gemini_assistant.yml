@@ -9,6 +9,9 @@ on:
 jobs:
   assist:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      discussions: write
     steps:
       - uses: actions/checkout@v3
       - name: Run Gemini CLI Assistant
