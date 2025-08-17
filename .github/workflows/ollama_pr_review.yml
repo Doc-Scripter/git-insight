@@ -28,7 +28,7 @@ jobs:
           pip install torch transformers
 
       - name: Generate diff
-        run: git diff origin/develop > changes.diff
+        run: git diff origin/main > changes.diff
 
       - name: Run PR Review
         env:
