@@ -11,26 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run Gemini CLI
-        uses: google-github-actions/run-gemini-cli@v0.1.11
-        with:
-            gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-            command: "review-pr --repo=${{ github.repository }} --pr=${{ github.event.pull_request.number }}"
-        env:
-          SURFACE: GitHub
-          GOOGLE_CLOUD_PROJECT:
-          GOOGLE_CLOUD_LOCATION:
-          GOOGLE_GENAI_USE_VERTEXAI: false
-          GOOGLE_GENAI_USE_GCA: false
-          GOOGLE_CLOUD_ACCESS_TOKEN:
-          PROMPT: You are a helpful assistant.
-      - name: Check for GEMINI_API_KEY
-        run: |
-          if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
-            echo "Error: GEMINI_API_KEY secret is not set. Please add it to your repository secrets."
-            exit 1
-          fi
-        # Adjust the position of this step based on when it needs to run in your release process.
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
