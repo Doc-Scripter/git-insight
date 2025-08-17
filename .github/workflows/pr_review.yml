@@ -16,6 +16,6 @@ jobs:
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           prompt: "/review"
-
+          use_gemini_code_assist: true
         env:
           SURFACE: GitHub
