@@ -25,13 +25,12 @@ jobs:
       - name: Run PR Review
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          gh pr checkout ${{ github.event.pull_request.number }}
           git diff origin/main...HEAD > changes.diff
-
           python <<EOF
           from transformers import pipeline
-          import subprocess, os
+          import os, subprocess
 
           reviewer = pipeline("text2text-generation", model="google/flan-t5-base")
 
@@ -39,21 +38,16 @@ jobs:
               diff = f.read()
 
           prompt = f"Review the following code diff and provide feedback:\n{diff}"
-
           out = reviewer(prompt, max_new_tokens=256, truncation=True)
           review_text = out[0]["generated_text"]
 
-          print("AI Review:\n", review_text)
-
-          # Write to a temp file for gh cli
           with open("review.txt", "w") as f:
-              f.write("## HuggingFace Code Review\n\n")
+              f.write("## 🤖 AI Code Review\n\n")
               f.write(review_text)
 
-          # Post comment back to the PR
-          pr_number = os.getenv("GITHUB_REF").split("/")[-1]
+          pr_number = os.getenv("PR_NUMBER")
           subprocess.run([
-              "gh", "pr", "comment", str(pr_number),
+              "gh", "pr", "comment", pr_number,
               "--body-file", "review.txt"
           ], check=True)
           EOF
