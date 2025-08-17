@@ -45,7 +45,7 @@ jobs:
               diff = f.read()
 
           prompt = f"Review the following code diff and provide feedback:\n{diff}"
-          out = reviewer(prompt, max_new_tokens=256, truncation=True)
+          out = reviewer(prompt, max_new_tokens=2024, truncation=True)
           review_text = out[0]["generated_text"]
 
           with open("review.txt", "w") as f:
