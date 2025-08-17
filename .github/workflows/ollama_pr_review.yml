@@ -1,0 +1,20 @@
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install Ollama
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/download | sh
+          ollama pull llama3:8b
+          
+      # Run a PR review using Ollama
+      - name: Review PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr checkout ${{ github.event.pull_request.number }}
+          git diff main...HEAD > changes.diff
+          ollama run llama3:8b "Review the following code diff:\n$(cat changes.diff)"
