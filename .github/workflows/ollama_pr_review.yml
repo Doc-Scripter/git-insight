@@ -1,4 +1,4 @@
-name: hugging-face Pull Request Review
+name: HuggingFace Pull Request Review
 
 on:
   pull_request:
@@ -22,23 +22,26 @@ jobs:
         run: |
           pip install torch transformers
 
-      - name: Run PR Review
+      - name: Generate and Post AI Review
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr checkout ${{ github.event.pull_request.number }}
           git diff origin/main...HEAD > changes.diff
 
-          python - <<'EOF'
+          echo "### 🤖 AI Code Review" > review.md
+          python - <<'EOF' >> review.md
           from transformers import pipeline
 
-          # pick a lightweight model
-          reviewer = pipeline("text-generation", model="google/flan-t5-base")
+          # use correct pipeline for flan-t5-base
+          reviewer = pipeline("text2text-generation", model="google/flan-t5-base")
 
           with open("changes.diff") as f:
-              diff = f.read()
+            diff = f.read()
 
-          prompt = f"Review the following code diff and provide feedback:\n{diff}"
+          prompt = f"Review the following code diff and provide constructive feedback:\n{diff}"
           out = reviewer(prompt, max_length=512, do_sample=False)
-          print("AI Review:\n", out[0]["generated_text"])
+          print(out[0]["generated_text"])
           EOF
+
+          gh pr comment ${{ github.event.pull_request.number }} --body-file review.md
