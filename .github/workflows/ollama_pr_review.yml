@@ -1,4 +1,4 @@
-name: Ollama Pull Request Review
+name: hugging-face Pull Request Review
 
 on:
   pull_request:
@@ -10,17 +10,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Install Ollama
-      - name: Install Ollama
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
-          curl -fsSL https://ollama.com/download | sh
-          ollama pull llama3:8b
-          
-      # Run a PR review using Ollama
-      - name: Review PR
+          pip install torch transformers
+
+      - name: Run PR Review
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr checkout ${{ github.event.pull_request.number }}
-          git diff main...HEAD > changes.diff
-          ollama run llama3:8b "Review the following code diff:\n$(cat changes.diff)"
+          git diff origin/main...HEAD > changes.diff
+
+          python - <<'EOF'
+          from transformers import pipeline
+
+          # pick a lightweight model
+          reviewer = pipeline("text-generation", model="google/flan-t5-base")
+
+          with open("changes.diff") as f:
+              diff = f.read()
+
+          prompt = f"Review the following code diff and provide feedback:\n{diff}"
+          out = reviewer(prompt, max_length=512, do_sample=False)
+          print("AI Review:\n", out[0]["generated_text"])
+          EOF
