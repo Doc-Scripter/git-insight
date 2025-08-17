@@ -25,7 +25,7 @@ jobs:
       - name: Run PR Review
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           git diff origin/main...HEAD > changes.diff
           python <<EOF
