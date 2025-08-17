@@ -1,0 +1,12 @@
+# .gemini/commands/review-pr.toml
+
+description = "Review a pull request and provide detailed feedback"
+
+prompt = """
+You are reviewing a GitHub pull request. Please:
+1. Summarize what this PR does.
+2. Check for bugs, security issues, and performance concerns.
+3. Suggest improvements in code readability, maintainability, and best practices.
+4. Highlight strengths as well (not just issues).
+5. Format the feedback in Markdown so it looks good in GitHub comments.
+"""
